@@ -101,7 +101,8 @@ async function askAI(e) {
   S.chat.push({ r: 'u', t }); S.busy = true; draw();
   try {
     const res = await fetch('/api/ai', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ message: t, context: { balance: S.bal ?? 0, policy: S.pol } }) });
-    const d = await res.json();
+    const raw = await res.text(); let d;
+    try { d = JSON.parse(raw); } catch { throw new Error('The AI service is not available at /api/ai on this site. Deploy the AI function or server (see the README), then try again.'); }
     if (!res.ok) throw new Error(d.error || 'AI request failed');
     let p = null;
     if (d.proposal) {

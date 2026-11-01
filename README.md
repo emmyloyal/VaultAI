@@ -69,5 +69,6 @@ Your assets. Your rules. Your AI. The AI only recommends. A deterministic Policy
 ## Deploying
 - Build with `npm run build` and host the `dist/` folder on any static host (Netlify, Vercel, Cloudflare Pages).
 - If the site lives in a sub-folder (for example GitHub Pages at /repo-name/), set `base: '/repo-name/'` in `vite.config.js`, or the page loads blank.
-- A static host has no `/api/ai`. Run `server/index.js` on a Node host (Render, Railway, Fly) with `NEARAI_API_KEY` set, and make `/api/*` reach it (a rewrite or proxy rule). Without it everything works except the AI chat, which shows a clear error.
+- **Vercel (recommended):** `api/ai.js` is already a serverless function, so the AI works with no extra server. In Project Settings > Environment Variables add `NEARAI_API_KEY` (and optionally `NEARAI_MODEL`). Do not prefix them with `VITE_`. Redeploy after adding them. Note: the per-IP rate limit only runs in the local/Node server, so set a spending cap on your NEAR AI Cloud key.
+- **Netlify, GitHub Pages and other static hosts** have no `/api/ai`. Run `server/index.js` on a Node host (Render, Railway, Fly) with `NEARAI_API_KEY` set and route `/api/*` to it. Without it everything works except the AI chat, which says the service is unavailable.
 - The `vite-plugin-node-polyfills` setting in `vite.config.js` is required. Without it the wallet libraries crash on load and the page is blank.

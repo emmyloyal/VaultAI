@@ -1,24 +1,4 @@
-{
-  "name": "vaultmind-ai",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "concurrently -k \"node --env-file=.env server/index.js\" \"vite\"",
-    "build": "vite build",
-    "server": "node --env-file=.env server/index.js",
-    "test": "node --test test/policy.test.js"
-  },
-  "dependencies": {
-    "@near-wallet-selector/core": "latest",
-    "@near-wallet-selector/here-wallet": "latest",
-    "@near-wallet-selector/meteor-wallet": "latest",
-    "@near-wallet-selector/modal-ui": "latest",
-    "@near-wallet-selector/my-near-wallet": "latest",
-    "express": "^4.19.2"
-  },
-  "devDependencies": {
-    "concurrently": "^9.0.0",
-    "vite": "^5.4.0",
-    "vite-plugin-node-polyfills": "^0.28.0"
-  }
-}
+{"name":"vaultmind-ai","private":true,"version":"0.1.0","type":"module",
+"scripts":{"dev":"vite","build":"vite build","typecheck":"tsc --noEmit"},
+"dependencies":{"@near-wallet-selector/core":"^8.9.0","@near-wallet-selector/modal-ui":"^8.9.0","@near-wallet-selector/my-near-wallet":"^8.9.0","react":"^18.3.1","react-dom":"^18.3.1"},
+"devDependencies":{"@types/react":"^18.3.3","@types/react-dom":"^18.3.0","@vitejs/plugin-react":"^4.3.0","typescript":"^5.5.0","vite":"^5.4.0"}}
